@@ -126,6 +126,7 @@ public class C04자료형 {
 		String job = "프로그래머";
 		System.out.println(name);
 		System.out.println(job);
+		System.out.printf("%x", System.identityHashCode(name));
 		
 		
 		
