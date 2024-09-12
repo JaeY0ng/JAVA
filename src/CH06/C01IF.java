@@ -106,7 +106,6 @@ public class C01IF {
 		} else if(n3 > n2 && n3 > n1) {
 			System.out.println(n3);
 		}
-		
 	}
 
 }
