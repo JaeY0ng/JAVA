@@ -48,7 +48,6 @@ public class C01IF {
 			System.out.println(num);
 		}else{
 			System.out.println("정수가 아니거나 3의 배수, 5의 배수가 아닙니다.");
-			System.out.println("정수가 아니거나 3의 배수, 5의 배수가 아닙니다.");
 		}
 		
 		
