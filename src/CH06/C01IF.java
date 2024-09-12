@@ -105,6 +105,8 @@ public class C01IF {
 			System.out.println(n2);
 		} else if(n3 > n2 && n3 > n1) {
 			System.out.println(n3);
+		}else {
+			System.out.println("세 수가 같거나 정수가 아닙니다");
 		}
 	}
 
