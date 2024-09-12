@@ -6,9 +6,9 @@ public class C06IncDesArith {
 	public static void main(String[] args) throws Exception {
 		int a=5, b=6, c=10, d;
 		boolean e;
-		d=++a*b--;
+		d=++a*b--; // 6 * 6 = 36
 		 System.out.printf("a = %d, b = %d, d = %d\n", a, b, d);
-		d=a++ + ++c - b--;
+		d=a++ + ++c - b--; // 
 		System.out.printf("a = %d, b = %d, c = %d, d = %d\n", a, b, c, d);
 		a=1;
 		b=0;
@@ -16,7 +16,7 @@ public class C06IncDesArith {
 		System.out.printf("a = %d, b = %d, c = %d, d = %d ,e = %b\n", a, b, c, d , e);
 		
 		
-
+		
 		
 	}
 }

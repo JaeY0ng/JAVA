@@ -10,7 +10,7 @@ public class C04ShiftArith {
 		
 //		System.out.println("<<Shift 연산결과 :" + num3);
 //		System.out.println(">>Shift 연산결과 :" + num4);
-		
+//		
 
 	}
 
