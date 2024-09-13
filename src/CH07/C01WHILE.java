@@ -38,6 +38,7 @@ public class C01WHILE {
 		// 구구단 2 단 출력
 		// 구구단 N 단출력 ( n<=9 )
 		
+		// 구구단 2 단
 		int i = 2;
 		int j = 1;
 		while ( i <= 9) {
@@ -45,9 +46,20 @@ public class C01WHILE {
 				System.out.println(i + "X" + j + " = " + (i*j) );
 				j++;
 			}
-//			j = 1;
-			i++;
 		}
+		
+		// 구구단 2 ~ 9 단
+		
+//		int i = 2;
+//		int j = 1;
+//		while ( i <= 9) {
+//			while( j <= 9 ){
+//				System.out.println(i + "X" + j + " = " + (i*j) );
+//				j++;
+//			}
+//			j = 1;
+//			i++;
+//		}
 		
 	}
 }
