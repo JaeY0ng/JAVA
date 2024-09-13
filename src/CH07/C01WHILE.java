@@ -146,19 +146,20 @@ public class C01WHILE {
 
 		if (n >= 10) {
 			System.out.println("9 단 까지만 입력이 가능 합니다");
-			System.exit(n);
-		}
-
-		int i = 2;
-		int j = 1;
-		while (i <= n) {
-			while (j <= 9) {
-				System.out.println(i + "X" + j + " = " + (i * j));
-				j++;
+		} else if (n <= 1) {
+			System.out.println("2 단 부터 입력이 가능 합니다");
+		} else {
+			int i = 2;
+			int j = 1;
+			while (i <= n) {
+				while (j <= 9) {
+					System.out.println(i + "X" + j + " = " + (i * j));
+					j++;
+				}
+				System.out.println();
+				j = 1;
+				i++;
 			}
-			System.out.println();
-			j = 1;
-			i++;
 		}
 	}
 }
