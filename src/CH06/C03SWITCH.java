@@ -18,6 +18,22 @@ public class C03SWITCH {
 			System.out.println("-----------M E N U-------------");
 			System.out.print("번호입력 : ");
 			num = sc.nextInt();
+			switch(num) {
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					System.out.println("종료합니다.");
+					System.exit(-1);
+					//break
+				default:
+					System.out.println("올바른 값을 입력하세요.");
+			} 			
 		}
 	}
 

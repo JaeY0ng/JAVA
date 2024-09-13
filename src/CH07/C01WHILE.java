@@ -1,0 +1,53 @@
+package CH07;
+
+public class C01WHILE {
+
+	public static void main(String[] args) {
+		
+		// 01 while 기본
+		// while (조건식) {
+		//  조건식이 참인 경우 실행되는 종속 문장 ( 1 개의 행일 때 생략 가능 )
+		//}
+		
+		
+		// 탈출용 변수
+		// 탈출을 위한 조건식
+		// 탈출을 위한 연산식
+		
+//		int i = 0;
+//		while(i<5) {
+//			System.out.println("HELLO WORLD");
+//			i++;
+//		}		
+		
+		// 02 1 - 10 까지 합
+//		int i = 1;
+//		int sum = 0;
+//		while( i <= 10 ) {
+//			System.out.println("i : " + i);
+//			sum += i;
+//			i++; // i 11 까지 증가
+//		}
+//		System.out.println("sum : " + sum);
+//	}
+		//04 1 - N 까지의 합
+		// N - M 까지의 합을 구합니다. ( N < M )
+		// 01 1 - N 까지 수중에 짝수 / 홀수 의 합을 각각 출력
+		// 1 - N 까지 수중에 3의 배수만 출력하고 그 합도 출력
+		// 1 - N 까지 수중에 4의 배수를 출력하고 4의 배수가 아닌 나머지의 합을 구하세요
+		// 구구단 2 단 출력
+		// 구구단 N 단출력 ( n<=9 )
+		
+		int i = 2;
+		int j = 1;
+		while ( i <= 9) {
+			while( j <= 9 ){
+				System.out.println(i + "X" + j + " = " + (i*j) );
+				j++;
+			}
+//			j = 1;
+			i++;
+		}
+		
+	}
+}
