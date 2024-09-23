@@ -57,8 +57,7 @@ public class C01정보은닉 {
 		C01Person hong = new C01Person("홍길동", 50, "대구");
 		int age = hong.getAge();
 		hong.setAddr("울산");
-		
-		
+		System.out.println(hong);
 		
 	}
 
