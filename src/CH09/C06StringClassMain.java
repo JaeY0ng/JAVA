@@ -1,5 +1,7 @@
 package CH09;
 
+import CH01.C01SystemOut;
+
 public class C06StringClassMain {
 
 	public static void main(String[] args) {
@@ -19,7 +21,13 @@ public class C06StringClassMain {
 	    System.out.printf("%x\n", System.identityHashCode(str3));
 	    System.out.printf("%x\n", System.identityHashCode(str4));
 		
-	   
+	   //StringBuilder , StringBuffer
+	    StringBuffer str5 = new StringBuffer();
+	    System.out.println("------------------");
+	    System.out.printf("%x\n", System.identityHashCode(str5));
+	    str5.append(str1).append(str2).append(str3).append(str4);
+	    System.out.printf("%x\n", System.identityHashCode(str5));
+	    System.out.println("----------------------");
 	}
 
 }
