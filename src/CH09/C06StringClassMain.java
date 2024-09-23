@@ -41,6 +41,20 @@ public class C06StringClassMain {
 	    
 	    System.out.println("문자 포함여부 : " + (str1.contains("va")));
 	    System.out.println("문자 포함여부 : " + (str1.contains("abs")));
+	    
+//	    Scanner sc = new Scanner(System.in);
+//	    String tmp = sc.nextLine();
+//	    System.out.println(tmp.length());
+//	    System.out.println(tmp.trim().length()); // .trim() 앞 뒤 공백 제거
+	    
+	    System.out.println("문자열 자르기 : " + (str1.substring(2,6)));
+	    
+	    String str6 = "홍길동, 남길동, 서길동, 동길동, 길동길동";
+	    String[] result = str6.split(", ");
+	    for(String val : result) {
+	    	System.out.println(val);
+	    }
+	   
 	}
 
 }
