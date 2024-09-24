@@ -44,7 +44,7 @@ class Parttimer extends Employee {
 
 	@Override
 	public String toString() {
-		return "Parttimer [hour_pay = " + hour_pay + " age = " + getAge() + " addr = " + getAddr() + "]";
+		return  getAddr() + "에 사시는 " + getAge() + "세 "+  name + "님의 시급은 " + hour_pay + "원 입니다.";
 	}
 
 }
@@ -63,7 +63,7 @@ class Regular extends Employee {
 	
 	@Override
 	public String toString() {
-		return "Regular [salary=" + salary + "]";
+		return getAddr() + "에 사시는 " + getAge() + "세 "+  name + "님의 월급은 " + salary + "만원 입니다.";
 	}
 
 	
@@ -75,8 +75,10 @@ public class C03Ex {
 
 	public static void main(String[] args) {
 		Parttimer emp1 = new Parttimer("홍길동", 25, "대구", 10000);
-		Regular emp2 = new Regular("서길동", 45, "울산", 50000);
+		Regular emp2 = new Regular("서길동", 45, "울산", 300);
 		
+		System.out.println(emp1);
+		System.out.println(emp2);
 	}
 
 }
