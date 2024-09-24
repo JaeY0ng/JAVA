@@ -4,7 +4,7 @@ class Employee {
 	public String name;
 	private int age;
 	private String addr;
-
+	
 	public int getAge() {
 		return age;
 	}
