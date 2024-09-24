@@ -19,13 +19,13 @@ class ArrayUtils {
 		}
 		return newArr;
 	}
+
 	public static void print(int [] a) {
 		for(int el : a) {
-			System.out.print(el +" ");
+			System.out.print(el + " ");
 			System.out.println();
 		}
 	}
-
 }
 
 public class C04Ex {
