@@ -29,6 +29,7 @@ public class C03SingletonPattern {
 		Company com2 = Company.getInstance();
 		com1.n1=100;
 		com2.n2=200;
+		
 		System.out.println("com1 : " + com1);
 		System.out.println("com2 : " + com2);
 		}
