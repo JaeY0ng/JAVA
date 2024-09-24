@@ -18,7 +18,14 @@ class C01Simple{
 
 public class C01StaticMain {
 	public static void main(String[] args) {
-		C01Simple.num1 = 100;
+		
 		System.out.println("num1 : " + C01Simple.num1);
+		C01Simple ob1 = new C01Simple();
+		C01Simple ob2 = new C01Simple();
+//		C01Simple.num1 = 100;
+		ob1.num1 = 123;
+		System.out.println("num1 : " + C01Simple.num1);
+		System.out.println("ob1's num1 : " + ob1.num1);
+		System.out.println("ob2's num1 : " + ob2.num1);
 	}
 }
