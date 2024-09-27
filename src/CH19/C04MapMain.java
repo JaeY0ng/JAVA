@@ -7,7 +7,7 @@ public class C04MapMain {
 
 	public static void main(String[] args) {
 
-		Map<String,Integer> map = new HashMap();
+		Map<String,Object> map = new HashMap();
 		// 추가
 		map.put("aaa", 1234);
 		map.put("bbb", 2222);
