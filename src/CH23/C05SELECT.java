@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class C04DELETE {
+public class C05SELECT {
 	
 	public static void main(String[] args) {
 		
@@ -22,32 +22,36 @@ public class C04DELETE {
 		
 		//
 		try {
+			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Driver Loading Success...");
 			conn = DriverManager.getConnection(url,id,pw);
 			System.out.println("DB CONNECTED...");
 			
 			//
-			pstmt =  conn.prepareStatement("delete from tbl_std where name=?");
-			pstmt.setString(1,"홍길동");
+			pstmt =  conn.prepareStatement("select * from tbl_std");
+			
+			//
+			rs = pstmt.executeQuery();
+			if(rs!=null) {
+				
+				while(rs.next()) {
+					System.out.print(rs.getString(1)+ " ");
+					System.out.print(rs.getInt(2)+ " ");
+					System.out.print(rs.getString(3)+ " ");
+					System.out.println();
+					
+				}
+		
+			}
+			
 	
-			
-			int result =  pstmt.executeUpdate(); //DML(INSERT , UPDATE ,DELETE)
-			if(result>0)
-				System.out.println("DELETE 성공!");
-			else
-				System.out.println("DELETE 실패!");
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			try {conn.close();} catch (SQLException e) {e.printStackTrace();}
 		}
 		
 		
