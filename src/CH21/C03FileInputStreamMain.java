@@ -1,27 +1,24 @@
 package CH21;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class C03FileInputStreamMain {
 
 	public static void main(String[] args) throws Exception {
 
-		InputStream fin = new FileInputStream("C:\\TMP_IO\\data1.exe");
-		
-		long size = 0;
-		long sTime = System.currentTimeMillis();
-		while(true) {
+		InputStream fin = new FileInputStream("C:\\TMP_IO\\data.xlsx");
+		InputStreamReader subIn = new InputStreamReader(fin);
+		subIn.read();
+
+		while (true) {
 			int data = fin.read();
-			if(data==-1)
+			if (data == -1)
 				break;
-//			System.out.print((char)data);
-			size++;
+			System.out.print((char) data);
 		}
-		long eTime = System.currentTimeMillis();
-		System.out.println("소요시간 : " + (eTime - sTime) + "ms");
-		System.out.println("파일크기 : " + (size * 1.0)/(1024*1024) + "MB");
+
 	}
 
 }
