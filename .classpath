@@ -6,6 +6,13 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/jyhhm/Downloads/jackson-core-2.18.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jyhhm/Downloads/jackson-databind-2.18.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jyhhm/Downloads/jackson-annotations-2.18.0.jar"/>
+	<classpathentry kind="lib" path="src/CH21/jackson-annotations-2.18.0.jar"/>
+	<classpathentry kind="lib" path="src/CH21/jackson-core-2.18.0.jar"/>
+	<classpathentry kind="lib" path="src/CH21/jackson-databind-2.18.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/jyhhm/Downloads/jsoup-1.18.1.jar"/>
+	<classpathentry kind="lib" path="src/CH21/selenium-server-4.25.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
