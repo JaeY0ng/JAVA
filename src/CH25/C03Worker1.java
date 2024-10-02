@@ -15,7 +15,7 @@ public class C03Worker1 implements Runnable {
 
 			try {
 				gui.area1.append("TASK01...\n");
-				Thread.sleep(500);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				break;
