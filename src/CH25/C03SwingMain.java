@@ -90,20 +90,25 @@ class C03GUI extends JFrame implements ActionListener, KeyListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == btn1) {
-		
-
+			System.out.println("btn1..clicked");
+			//area1 시작
+			if(th1==null) {
+				C03Worker1 w1 = new C03Worker1(this);
+				th1 = new Thread(w1);
+				th1.start();
+			}
 		}
 
 		if (e.getSource() == btn2) {
-		
-				
+			System.out.println("btn2..clicked");
+
 		}
 		if (e.getSource() == btn3) {
-
+			System.out.println("btn3..clicked");
 
 		}
 		if (e.getSource() == btn4) {
-			// 스레드2 중지
+			System.out.println("btn4..clicked");
 
 		}
 
@@ -135,11 +140,11 @@ class C03GUI extends JFrame implements ActionListener, KeyListener {
 	}
 
 }
+
 public class C03SwingMain {
 
 	public static void main(String[] args) {
 		new C03GUI();
-		
 
 	}
 
