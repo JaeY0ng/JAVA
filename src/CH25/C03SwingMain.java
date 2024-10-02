@@ -101,15 +101,26 @@ class C03GUI extends JFrame implements ActionListener, KeyListener {
 
 		if (e.getSource() == btn2) {
 			System.out.println("btn2..clicked");
-
+			if(th1!=null) {
+				th1.interrupt();
+				th1=null;
+			}
 		}
 		if (e.getSource() == btn3) {
 			System.out.println("btn3..clicked");
-
+			//area2 시작
+			if(th2==null) {
+				C03Worker2 w2 = new C03Worker2(this);
+				th2 = new Thread(w2);
+				th2.start();
+			}
 		}
 		if (e.getSource() == btn4) {
 			System.out.println("btn4..clicked");
-
+			if(th2!=null) {
+				th2.interrupt();
+				th2=null;
+			}
 		}
 
 	}
