@@ -22,6 +22,7 @@ class Cgui extends JFrame implements ActionListener,KeyListener
 	JTextField txt1;
 	//소켓 코드 추가
 	Socket server;
+	DataOutputStream dout;
 	
 
 	Cgui() throws Exception {
@@ -52,12 +53,15 @@ class Cgui extends JFrame implements ActionListener,KeyListener
 		setVisible(true);	//프레임창 보여주기
 		
 		// 소켓 연결
-		server = new Socket("",9000);
+		server = new Socket("192.168.5.13",9000);
 		
 		//수신 스레드
 		ClientRecvThread recv = new ClientRecvThread(this,server);
 		Thread th = new Thread(recv);
 		th.start();
+		
+		//송신 처리
+		dout = new DataOutputStream(server.getOutputStream());
 	}
 
 	@Override
@@ -77,8 +81,25 @@ class Cgui extends JFrame implements ActionListener,KeyListener
 		//System.out.println("KEYPRESSED함수 : "+e.getKeyCode());
 		if(e.getKeyCode()==10) //엔터키 입력
 		{
-				
-		}
+
+			System.out.println("ENTER!...");
+			String msg = txt1.getText();
+			area.append("[SERVER] " + msg + "\n");
+			txt1.setText("");
+			
+			// 클라이언트로 내용전송
+			try {
+				dout.writeUTF(msg);
+				if(msg.equals("q")) {
+					System.exit(-1);       // 강제종료			
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			}
+		
+		
 	}
 	//키를 뗏을때(UNICODE 미지원)
 	@Override
