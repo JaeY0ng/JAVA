@@ -43,7 +43,5 @@ public class Factory extends Building implements ICanFly{
 	public void underAttack(Unit unit) {
 		
 	}
-	
-
 
 }
