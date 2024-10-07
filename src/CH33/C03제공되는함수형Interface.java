@@ -18,7 +18,8 @@ public class C03제공되는함수형Interface {
 		return x.stream()
 				.filter(el -> el instanceof Integer)
 				.map(el -> (Integer)el)
-				.collect(Collectors.toList());
+				.collect(Collectors.toUnmodifiableList());
+				
 	
 	};
 	
@@ -28,8 +29,12 @@ public class C03제공되는함수형Interface {
 	public static Function<Integer, Integer> func2_2 = func1_2.andThen(func1);
 	
 	
-	//3
+	//03
 	public static BinaryOperator<Integer> func3 = (x,y) -> x + y;
+	
+	//04
+	public static Function<Integer, Function<Integer, Integer>> func4 = x -> y -> x + y;
+	
 	
 	
 	public static void main(String[] args) {
@@ -52,6 +57,14 @@ public class C03제공되는함수형Interface {
 		
 		System.out.println(li2);
 		
+		//02
+		System.out.println(func2.apply(5));
+		System.out.println(func2_2.apply(5));
+		
+		//03
+		System.out.println(func3.apply(10, 20));
+		
+		System.out.println(func4.apply(5).apply(10) ); // 10 -> 5 + 10;
 	}
 
 	
