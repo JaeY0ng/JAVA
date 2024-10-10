@@ -95,7 +95,7 @@ public class BookDAOImpl {
 		
 		return result;
 	}
-	public int delete(int bookCode) throws Exception {
+	public int delete(Long bookCode) throws Exception {
 		pstmt = conn.prepareStatement("delete from tbl_book where bookCode=?");
 		pstmt.setLong(1,bookCode);
 		
