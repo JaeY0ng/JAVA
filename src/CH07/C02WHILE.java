@@ -643,28 +643,28 @@ public class C02WHILE {
 //		}
 //	   
 
-		Scanner sc = new Scanner(System.in);
-		int height = sc.nextInt();
-		 
+//		Scanner sc = new Scanner(System.in);
+//		int height = sc.nextInt();
+//		 
 //		int height = 9;
-		for (int i = height; i > 0; i--) {
-			if(height / 2 + 1 >= i){
-			for (int j = 1; j <= height - i; j++) {
-				System.out.print(" ");
-			}
-			for (int k = 0; k < 2 * i - 1; k++) {
-				System.out.print("*");
-			}
-			} else {
-			for (int j = 1; j <= height - i; j++) {
-				System.out.print(" ");
-			}
-			for (int k = 0; k < (6*2)-2*i; k++) {
-				System.out.print("*");
-			}
-			}
-			System.out.println();
-		}
+//		for (int i = height; i > 0; i--) {
+//			if(height / 2 + 1 >= i){
+//			for (int j = 1; j <= height - i; j++) {
+//				System.out.print(" ");
+//			}
+//			for (int k = 0; k < 2 * i - 1; k++) {
+//				System.out.print("*");
+//			}
+//			} else {
+//			for (int j = 1; j <= height - i; j++) {
+//				System.out.print(" ");
+//			}
+//			for (int k = 0; k < (6*2)-2*i; k++) {
+//				System.out.print("*");
+//			}
+//			}
+//			System.out.println();
+//		}
 
 //	      int height = 5;
 //	      

@@ -96,7 +96,7 @@ public class TUI {
 			switch (num) {
 			case 1:
 				Map<String, Object> result = controller.execute("/book", 1, null);
-				List<BookDto> list = (List<BookDto>) result.get("result");
+				List<BookDTO> list = (List<BookDTO>) result.get("result");
 				list.stream().forEach((dto) -> {
 					System.out.println(dto);
 				});
