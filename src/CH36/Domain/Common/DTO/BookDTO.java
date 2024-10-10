@@ -8,7 +8,7 @@ public class BookDTO {
 	
 	public BookDTO() {}
 	
-	public BookDTO(int bookCode, String bookName, String publisher, String isbn) {
+	public BookDTO(long bookCode, String bookName, String publisher, String isbn) {
 		super();
 		this.bookCode = bookCode;
 		this.bookName = bookName;

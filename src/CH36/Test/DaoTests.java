@@ -1,9 +1,12 @@
 package CH36.Test;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import CH36.Domain.Common.DAO.BookDAOImpl;
 import CH36.Domain.Common.DTO.BookDTO;
+import Ch37_MVC_Add_View_Socket_Thread.Domain.Common.Dto.BookDto;
 
 
 class DaoTests {
@@ -27,5 +30,11 @@ class DaoTests {
 	void BookDaoDelete() throws Exception{
 		BookDAOImpl dao = BookDAOImpl.getInstance();
 		dao.delete(1);
+	}
+	@Test
+	void BookDaoSelect() throws Exception{
+		BookDAOImpl dao = BookDAOImpl.getInstance();
+		BookDTO dto = dao.select(3000024553014L);
+		System.out.println(dto);
 	}
 }
