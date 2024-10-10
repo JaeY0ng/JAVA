@@ -6,6 +6,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 import CH36.Controller.FrontController;
+import CH36.Domain.Common.DTO.BookDTO;
 
 class ControllerTests {
 
@@ -34,6 +35,24 @@ class ControllerTests {
 		
 		//요청사항 전달
 		fc.execute(params);
+		
+	}
+	
+	@Test
+	void FcControllerTests_3() {
+		// 요청사항 받을 FC 생성
+		FrontController fc = new FrontController();
+		// 전달할 파라미터 준비
+		Map<String,Object> params = new HashMap();
+		params.put("endPoint", "/book");
+		params.put("serviceNo", 1);
+		params.put("bookDTO", new BookDTO(11223344L,"","한빛미디어","1234"));
+		//요청사항 전달
+		Map<String,Object> rValue = fc.execute(params);
+		boolean isSuccess = (Boolean)rValue.get("success");
+		String message = (String)rValue.get("message");
+		System.out.println("성공여부 : " + isSuccess);
+		System.out.println("message : " + message);
 		
 	}
 
