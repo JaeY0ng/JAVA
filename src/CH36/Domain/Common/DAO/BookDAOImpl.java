@@ -52,7 +52,7 @@ public class BookDAOImpl {
 		if(rs!=null) {
 			while(rs.next()) {
 				dto = new BookDTO();
-				dto.setBookCode(rs.getInt("bookCode"));
+				dto.setBookCode(rs.getLong("bookCode"));
 				dto.setBookName(rs.getString("bookName"));
 				dto.setPublisher(rs.getString("publisher"));
 				dto.setIsbn(rs.getString("isbn"));
@@ -69,7 +69,7 @@ public class BookDAOImpl {
 	}
 	public int insert(BookDTO dto) throws Exception {
 		pstmt = conn.prepareStatement("insert into tbl_book values(?,?,?,?)");
-		pstmt.setInt(1, dto.getBookCode());
+		pstmt.setLong(1, dto.getBookCode());
 		pstmt.setString(2, dto.getBookName());
 		pstmt.setString(3, dto.getPublisher());
 		pstmt.setString(4, dto.getIsbn());
@@ -86,7 +86,7 @@ public class BookDAOImpl {
 		pstmt.setString(1, dto.getBookName());
 		pstmt.setString(2, dto.getPublisher());
 		pstmt.setString(3, dto.getIsbn());
-		pstmt.setInt(4, dto.getBookCode());
+		pstmt.setLong(4, dto.getBookCode());
 		
 		int result = pstmt.executeUpdate();
 				
@@ -97,7 +97,7 @@ public class BookDAOImpl {
 	}
 	public int delete(int bookCode) throws Exception {
 		pstmt = conn.prepareStatement("delete from tbl_book where bookCode=?");
-		pstmt.setInt(1,bookCode);
+		pstmt.setLong(1,bookCode);
 		
 		int result = pstmt.executeUpdate();
 				

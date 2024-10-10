@@ -1,7 +1,7 @@
 package CH36.Domain.Common.DTO;
 
 public class BookDTO {
-	private int bookCode;
+	private long bookCode;
 	private String bookName;
 	private String publisher;
 	private String isbn;
@@ -16,10 +16,10 @@ public class BookDTO {
 		this.isbn = isbn;
 	}
 	
-	public int getBookCode() {
+	public long getBookCode() {
 		return bookCode;
 	}
-	public void setBookCode(int bookCode) {
+	public void setBookCode(long bookCode) {
 		this.bookCode = bookCode;
 	}
 	public String getBookName() {
