@@ -1,13 +1,16 @@
 package CH36.Domain.Common.DTO;
 
 public class BookDTO {
+
 	private long bookCode;
 	private String bookName;
 	private String publisher;
 	private String isbn;
 	
+	//디폴트생성자
 	public BookDTO() {}
 	
+	//모든인자 생성자
 	public BookDTO(long bookCode, String bookName, String publisher, String isbn) {
 		super();
 		this.bookCode = bookCode;
@@ -16,6 +19,8 @@ public class BookDTO {
 		this.isbn = isbn;
 	}
 	
+	
+	//Getter and Setter
 	public long getBookCode() {
 		return bookCode;
 	}
@@ -41,9 +46,11 @@ public class BookDTO {
 		this.isbn = isbn;
 	}
 	
+	//toString 재정의
 	@Override
 	public String toString() {
 		return "BookDto [bookCode=" + bookCode + ", bookName=" + bookName + ", publisher=" + publisher + ", isbn="
 				+ isbn + "]";
-	}
+	};
+	
 }
