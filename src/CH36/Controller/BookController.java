@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import CH36.Domain.Common.DTO.BookDTO;
+import CH36.Domain.Common.Service.BookServiceImpl;
+
 
 public class BookController implements SubController{
 
+//  API DOCUMENT
 //	Endpoint 	serviceNo		parameter		return
 //	/book		add(0)			BookDTO			boolean
 //	/book		update(1)		BookDTO			boolean
@@ -14,6 +17,24 @@ public class BookController implements SubController{
 //	/book		select(3) 		bookCode		BookDTO
 //	/book		selectAll(5)	x->(변경예정)		List<BookDTO>
 	
+	//예외처리함수
+	public Map<String,Object> ExceptionHandler(Exception e){
+		Map<String,Object> exMap = new HashMap();
+		exMap.put("success", false);
+		exMap.put("exception", e);
+		return null;
+	}
+	
+	private BookServiceImpl bookServiceImpl;
+	public BookController() {
+		try {
+		bookServiceImpl = BookServiceImpl.getInstance();
+	} catch (Exception e) {
+		
+		
+		ExceptionHandler(e);
+	}
+	}
 	
 	@Override
 	public Map<String, Object> execute(Map<String, Object> params) {
@@ -25,7 +46,7 @@ public class BookController implements SubController{
 		// 뷰전달 변수
 		Map<String, Object> returnValue = new HashMap();
 		
-		
+		try {
 		switch(serviceNo) {
 			case 1:			//add
 				System.out.println("[SC] BookController add()...");
@@ -39,11 +60,17 @@ public class BookController implements SubController{
 				}
 				// 서비스 요청
 				System.out.println("SC] BookController DTO : " + bookDTO);
+				boolean isAdded = bookServiceImpl.bookRegistration(bookDTO);
+				
 				
 				// 뷰로 전달
+				if(isAdded) {
 				returnValue.put("success", true);
-				returnValue.put("message", "도서 등록을 완료하였습니다.");
-				
+				returnValue.put("message", "도서 등록을 완료 하였습니다.");
+				}else {
+					returnValue.put("success", false);
+					returnValue.put("message", "도서 등록을 실패 하였습니다.");
+				}
 				break;
 				
 			case 2:			//update
@@ -61,7 +88,9 @@ public class BookController implements SubController{
 			default:
 				break;
 		}
-		
+		} catch(Exception e) {
+			return ExceptionHandler(e);
+		}
 		return returnValue;
 	}
 		
@@ -71,7 +100,6 @@ public class BookController implements SubController{
 			return false;
 		else if (dto.getBookName().trim()==null || dto.getBookName().trim().equals(""))
 			return false;
-		
 		return true;
 	}
 	
