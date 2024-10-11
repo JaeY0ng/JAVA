@@ -1,12 +1,11 @@
 package CH36.Test;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import CH36.Domain.Common.DAO.BookDAOImpl;
+import CH36.Domain.Common.DAO.UserDAOImpl;
 import CH36.Domain.Common.DTO.BookDTO;
-import Ch37_MVC_Add_View_Socket_Thread.Domain.Common.Dto.BookDto;
+import CH36.Domain.Common.DTO.UserDTO;
 
 
 class DaoTests {
@@ -36,5 +35,12 @@ class DaoTests {
 		BookDAOImpl dao = BookDAOImpl.getInstance();
 		BookDTO dto = dao.select(3000024553014L);
 		System.out.println(dto);
+	}
+	@Test
+	void UserDaoInsert() throws Exception{
+		UserDAOImpl dao = UserDAOImpl.getInstance();
+		dao.insert(new UserDTO("aaa","111","ROLE_USER",false));
+		
+		
 	}
 }

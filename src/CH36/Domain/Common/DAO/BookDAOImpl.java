@@ -25,7 +25,7 @@ public class BookDAOImpl {
 	private BookDAOImpl() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url, id, pw);
-		System.out.println("DB Connection Success");
+		System.out.println("BookDAOImpl DB Connection Success");
 
 	}
 
