@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import CH36.Domain.Common.DTO.BookDTO;
+import CH36.Domain.Common.Service.BookService;
 import CH36.Domain.Common.Service.BookServiceImpl;
 
 public class BookController implements SubController {
@@ -25,7 +26,8 @@ public class BookController implements SubController {
 		return exMap;
 	}
 	
-	private BookServiceImpl bookServiceImpl;
+	private BookService bookServiceImpl;
+	
 	public BookController(){
 		try {
 			bookServiceImpl = BookServiceImpl.getInstance();

@@ -10,7 +10,7 @@ import CH36.Domain.Common.DAO.ConnectionPool.ConnectionItem;
 import CH36.Domain.Common.DAO.ConnectionPool.ConnectionPool;
 import CH36.Domain.Common.DTO.BookDTO;
 
-public class BookDAOImpl {
+public class BookDAOImpl implements BookDAO{
 	//DBCONN 속성
 //	private String id="root";
 //	private String pw="1234";
@@ -23,6 +23,10 @@ public class BookDAOImpl {
 	private ResultSet rs;
 	
 	private ConnectionPool connectionPool;
+	private ConnectionItem connItem;
+	
+
+	
 	
 	//싱글톤 패턴 처리코드
 	private BookDAOImpl() throws Exception {
@@ -46,9 +50,8 @@ public class BookDAOImpl {
 		List<BookDTO> list = new ArrayList();
 		
 		//Connection Pool code
-		ConnectionItem connItem = connectionPool.getConnection();
+		connItem = connectionPool.getConnection();
 		Connection conn = connItem.getConn();
-		
 		pstmt = conn.prepareStatement("select * from tbl_book");
 		
 		rs = pstmt.executeQuery();
@@ -73,7 +76,7 @@ public class BookDAOImpl {
 	public BookDTO select(long bookCode) throws Exception{
 		
 		//Connection Pool code
-		ConnectionItem connItem = connectionPool.getConnection();
+		connItem = connectionPool.getConnection();
 		Connection conn = connItem.getConn();
 		
 		pstmt = conn.prepareStatement("select * from tbl_book where bookCode=?");
@@ -82,12 +85,14 @@ public class BookDAOImpl {
 		rs = pstmt.executeQuery();
 		BookDTO dto=null;
 		if(rs!=null) {
-			rs.next();
-			dto = new BookDTO();
-			dto.setBookCode(rs.getLong("bookCode"));
-			dto.setBookName(rs.getString("bookName"));
-			dto.setPublisher(rs.getString("publisher"));
-			dto.setIsbn(rs.getString("isbn"));
+			
+			if(rs.next()) {
+				dto = new BookDTO();
+				dto.setBookCode(rs.getLong("bookCode"));
+				dto.setBookName(rs.getString("bookName"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setIsbn(rs.getString("isbn"));
+			}
 			
 		}
 		
@@ -97,14 +102,13 @@ public class BookDAOImpl {
 		rs.close();
 		pstmt.close();
 		
-		
 		return dto;
 	}
 
 	public int insert(BookDTO dto) throws Exception{
 		
 		//Connection Pool code
-		ConnectionItem connItem = connectionPool.getConnection();
+		connItem = connectionPool.getConnection();
 		Connection conn = connItem.getConn();
 		
 		pstmt = conn.prepareStatement("insert into tbl_book values(?,?,?,?)");
@@ -124,7 +128,7 @@ public class BookDAOImpl {
 	}
 	public int update(BookDTO dto) throws Exception{
 		//Connection Pool code
-		ConnectionItem connItem = connectionPool.getConnection();
+		connItem = connectionPool.getConnection();
 		Connection conn = connItem.getConn();
 		
 		pstmt = conn.prepareStatement("update tbl_book set bookName=?,publisher=?,isbn=? where bookCode=?");
@@ -146,7 +150,7 @@ public class BookDAOImpl {
 	public int delete(long bookCode) throws Exception {
 		
 		//Connection Pool code
-		ConnectionItem connItem = connectionPool.getConnection();
+		connItem = connectionPool.getConnection();
 		Connection conn = connItem.getConn();
 		
 		pstmt = conn.prepareStatement("delete from tbl_book where bookCode=?");

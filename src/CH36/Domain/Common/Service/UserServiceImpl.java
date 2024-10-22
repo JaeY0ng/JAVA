@@ -1,7 +1,6 @@
 package CH36.Domain.Common.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import CH36.Domain.Common.DAO.SessionDAOImpl;
@@ -10,59 +9,46 @@ import CH36.Domain.Common.DAO.ConnectionPool.ConnectionPool;
 import CH36.Domain.Common.DTO.SessionDTO;
 import CH36.Domain.Common.DTO.UserDTO;
 
-public class UserServiceImpl {
-	// UserDAO 연결
-	private SessionDAOImpl sessionDaoImpl;
+public class UserServiceImpl implements UserService {
+
+	//
 	private UserDAOImpl userDaoImpl;
-
+	private SessionDAOImpl sessionDaoImpl;
+	
 	private ConnectionPool connectionPool;
-
-	// 싱글톤 패턴 처리코드
-	private UserServiceImpl() throws Exception {
+	
+	//싱글톤 패턴 코드(추가해주세요 - )
+	private UserServiceImpl() throws Exception{
 		userDaoImpl = UserDAOImpl.getInstance();
-	};
-
+		this.sessionDaoImpl = SessionDAOImpl.getInstance();
+		
+		this.connectionPool = ConnectionPool.getInstance();
+		
+	}
+	
 	private static UserServiceImpl instance;
-
 	public static UserServiceImpl getInstance() throws Exception {
-		if (instance == null)
+		if(instance==null)
 			instance = new UserServiceImpl();
 		return instance;
 	}
-
-	// CRUD
-
-	// 회원가입 함수명(1)
+	
+	//CRUD
+	//회원가입 함수명(1)
+	@Override
 	public boolean memberJoin(UserDTO userDto) throws Exception {
+		//비즈니스 유효성 체크 항목 고려
 		return userDaoImpl.insert(userDto) > 0;
-//		return true;
 	}
+	
 
-	// 회원수정(2)
-	public boolean memberModify(UserDTO userDto) throws Exception {
-		return false;
-	}
-
-	// 회원탈퇴(3)
-	public boolean memberRemove(UserDTO userdto) throws Exception {
-		return false;
-	}
-
-	// 회원정보조회(4)
-	public UserDTO getMember(String username) throws Exception {
-		return userDaoImpl.select(username);
-	}
-
-	// 회원전체정보조회(5)
-	public List<UserDTO> getUsername() throws Exception {
-		return userDaoImpl.select();
-	}
-
-	public Map<String, Object> login(UserDTO userDto, Integer sessionId) throws Exception , NullPointerException {
+	//로그인
+	@Override
+	public Map<String, Object> login(UserDTO userDto, Integer sessionId) throws Exception {
 		//TX Start
 		Map<String,Object> returnValue=null;
 		try {
-//				connectionPool.beginTransaction();
+				connectionPool.beginTransaction();
 				returnValue = new HashMap();
 				//로그인된 상태인지 확인(tbl_Session에서 session조회)
 				SessionDTO sessiondto = null;
@@ -114,47 +100,57 @@ public class UserServiceImpl {
 		return returnValue;
 	}
 	
-	// 로그아웃
-	public Map<String, Object> logout(Integer sessionId) throws Exception {
-		Map<String, Object> returnValue = null;
+	@Override
+	public Map<String,Object> logout(int sessionId) throws Exception{
+		//TX Start
+		Map<String,Object> returnValue=null;
+		
 		try {
-			// TX start
-			connectionPool.beginTransaction(); // tx start
-			returnValue = new HashMap();
+				connectionPool.beginTransaction();	//tx start
+				returnValue = new HashMap();
 
-			// 1
-			SessionDTO sessionDto = sessionDaoImpl.select(sessionId);
-			if (sessionDto == null) {
-				returnValue.put("success", false);
-				returnValue.put("message", "로그인 상태가 아닙니다.");
-				return returnValue;
-			}
-			
-			//2
-			int result = sessionDaoImpl.delete(sessionId);
-			if(result>0) {
-				returnValue.put("success", true);
-				returnValue.put("message", "로그아웃 완료!");
-				return returnValue;
-			}
-			
-			connectionPool.commitTransaction(); // tx end
-			
-		} catch (Exception e) {
+				//1
+				SessionDTO sessionDto = sessionDaoImpl.select(sessionId);
+				if(sessionDto==null) {
+					returnValue.put("success", false);
+					returnValue.put("message", "로그인상태가 아닙니다");
+					return returnValue;
+				}
+				
+				//2
+				int result = sessionDaoImpl.delete(sessionId);
+				if(result>0) {
+					returnValue.put("success", true);
+					returnValue.put("message", "로그아웃 완료!");
+					
+				}
+				connectionPool.commitTransaction(); //tx end
+				
+				
+		}catch(Exception e) {
 			connectionPool.rollbackTransaction();
 			System.out.println("TEST");
 			throw e;
 		}
+		
 		return returnValue;
 	}
 	
+	
+	@Override
 	public SessionDTO getSession(int sessionId) throws Exception{
 		return sessionDaoImpl.select(sessionId);
 	}
+	
+	
+	//회원수정(2)
+	//회원탈퇴(3)
+	//회원정보조회(4)
+	//회원전체정보조회(5)
 
-	// 로그인 함수명(6 - )
-
-	// 로그아웃 함수명(7 - )
-
+	//로그인 함수명(6 - )
+	//로그아웃 함수명(7 - )
 	//
+	
+
 }

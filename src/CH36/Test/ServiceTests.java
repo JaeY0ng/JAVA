@@ -8,7 +8,9 @@ import org.junit.jupiter.api.Test;
 import CH36.Domain.Common.DTO.BookDTO;
 import CH36.Domain.Common.DTO.SessionDTO;
 import CH36.Domain.Common.DTO.UserDTO;
+import CH36.Domain.Common.Service.BookService;
 import CH36.Domain.Common.Service.BookServiceImpl;
+import CH36.Domain.Common.Service.UserService;
 import CH36.Domain.Common.Service.UserServiceImpl;
 
 class ServiceTests {
@@ -22,7 +24,7 @@ class ServiceTests {
 
 	@Test
 	void bookServiceImpl_2() throws Exception {
-		BookServiceImpl service = BookServiceImpl.getInstance();
+		BookService service = BookServiceImpl.getInstance();
 		List<BookDTO> list = service.getBooks();
 		list.forEach(el -> System.out.println(el));
 	}
@@ -31,7 +33,7 @@ class ServiceTests {
 	//로그인
 	@Test
 	void userServiceImpl_login() throws Exception{
-		UserServiceImpl service = UserServiceImpl.getInstance();
+		UserService service = UserServiceImpl.getInstance();
 		UserDTO dto = new UserDTO();
 		dto.setUsername("member1");
 		dto.setPassword("111");
@@ -44,7 +46,7 @@ class ServiceTests {
 	
 	@Test
 	void userServiceImpl_logout() throws Exception {
-		UserServiceImpl service = UserServiceImpl.getInstance();
+		UserService service = UserServiceImpl.getInstance();
 		SessionDTO dto = new SessionDTO();
 		dto.setSessionId(2);
 		Map<String, Object> response = service.logout(dto.getSessionId());
@@ -55,7 +57,7 @@ class ServiceTests {
 
 	@Test
 	void userServiceImpl_session() throws Exception {
-		BookServiceImpl service = BookServiceImpl.getInstance();
+		BookService service = BookServiceImpl.getInstance();
 		Map<String, Object> response = service.bookRegistration(new BookDTO(1111L, "이것이 자바다", "오렌지미디어", "121212"), 10);
 		for (String key : response.keySet()) {
 			System.out.println(key + " : " + response.get(key));

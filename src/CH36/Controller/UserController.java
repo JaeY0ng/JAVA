@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import CH36.Domain.Common.DTO.UserDTO;
+import CH36.Domain.Common.Service.UserService;
 import CH36.Domain.Common.Service.UserServiceImpl;
 
 public class UserController implements SubController {
 
-	private UserServiceImpl userServiceImpl;
+	private UserService userServiceImpl;
 
 	public UserController() {
 		try {

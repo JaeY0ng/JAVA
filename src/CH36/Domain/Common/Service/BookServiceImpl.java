@@ -4,15 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import CH36.Domain.Common.DAO.BookDAO;
 import CH36.Domain.Common.DAO.BookDAOImpl;
 import CH36.Domain.Common.DAO.ConnectionPool.ConnectionPool;
 import CH36.Domain.Common.DTO.BookDTO;
 import CH36.Domain.Common.DTO.SessionDTO;
+public class BookServiceImpl implements BookService {
 
-public class BookServiceImpl {
 	
 	//BookDao 연결
-	private BookDAOImpl bookDaoImpl;
+	private BookDAO bookDaoImpl;
 	
 	//UserService 연결
 	private UserServiceImpl userServiceImpl;
@@ -30,14 +31,15 @@ public class BookServiceImpl {
 		this.userServiceImpl = userServiceImpl.getInstance();
 
 	};
-	private static BookServiceImpl instance;
-	public static BookServiceImpl getInstance() throws Exception {
+	private static BookService instance;
+	public static BookService getInstance() throws Exception {
 		if(instance==null)
 			instance = new BookServiceImpl();
 		return instance;
 	}
 	
 	//도서등록
+	@Override
 	public Map<String,Object> bookRegistration(BookDTO dto,int sessionId) throws Exception{
 
 		Map<String,Object> returnValue = new HashMap();
@@ -96,24 +98,29 @@ public class BookServiceImpl {
 	
 	
 	//도서내용수정
+	@Override
 	public boolean bookUpdate(BookDTO dto) throws Exception {
 		
 		return bookDaoImpl.update(dto) > 0;
 	}
 	//도서삭제
+	@Override
 	public boolean bookRemove(long bookCode) throws Exception {
 		return bookDaoImpl.delete(bookCode) > 0;
 	}
 	
 	//도서 조회(단건 - BookDto)
+	@Override
 	public BookDTO getBook(long bookCode) throws Exception{
 		return bookDaoImpl.select(bookCode);
 	}
 	//도서 조회(다건 - List<BookDto))
+	@Override
 	public List<BookDTO> getBooks() throws Exception {
 		return bookDaoImpl.select();
 	}
 	
+	@Override
 	public void txTests() throws Exception{
 			
 		try {
